@@ -17,6 +17,11 @@ jobs:
     - name: Build Docker image
       run: docker build -t my-python-app:test .
 
+    - name: Run application inside Docker container
+      run: |
+        docker run --rm my-python-app:test python main.py
+
     - name: Run tests inside Docker container
       run: |
-        docker run --rm my-python-app:test pytest test.py
+        docker run --rm my-python-app:test pytest -v test.py
+
